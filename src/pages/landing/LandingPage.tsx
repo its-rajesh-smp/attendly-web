@@ -57,7 +57,7 @@ const LandingPage = () => {
           <div className="flex flex-col md:flex-row gap-10 items-center">
             <div className="md:w-1/2">
               <img
-                src="/src/assets/gibli-event-image.jpg"
+                src="/gibli-event-image.jpg"
                 alt="Attendly Events"
                 className="rounded-lg shadow-xl w-full max-w-lg mx-auto"
               />
@@ -131,7 +131,7 @@ const LandingPage = () => {
               <div className="h-48 bg-gradient-to-r from-blue-500 to-purple-600 relative">
                 <img
                   className="w-full h-full object-cover absolute"
-                  src="/src/assets/webdev-summit.jpg"
+                  src="/webdev-summit.jpg"
                   alt="Event 1"
                 />
                 <div className="absolute bottom-4 left-4 bg-white px-3 py-1 rounded-full text-sm font-medium text-purple-700">
@@ -160,7 +160,7 @@ const LandingPage = () => {
               <div className="h-48 bg-gradient-to-r from-pink-500 to-rose-600 relative">
                 <img
                   className="w-full h-full object-cover absolute"
-                  src="/src/assets/music.jpg"
+                  src="/music.jpg"
                   alt="Event 2"
                 />
                 <div className="absolute bottom-4 left-4 bg-white px-3 py-1 rounded-full text-sm font-medium text-pink-700">
@@ -189,7 +189,7 @@ const LandingPage = () => {
               <div className="h-48 bg-gradient-to-r from-amber-400 to-orange-600 relative">
                 <img
                   className="w-full h-full object-cover absolute"
-                  src="/src/assets/ui-ux.jpg"
+                  src="/ui-ux.jpg"
                   alt="Event 3"
                 />
                 <div className="absolute bottom-4 left-4 bg-white px-3 py-1 rounded-full text-sm font-medium text-orange-700">
