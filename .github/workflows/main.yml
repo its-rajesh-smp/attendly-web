@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: [ubuntu-latest, main, self-hosted, Linux, X64]
+    runs-on: [self-hosted, main]
 
     steps:
       - name: Checkout code
