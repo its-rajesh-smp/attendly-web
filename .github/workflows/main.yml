@@ -1,4 +1,4 @@
-name: Attendly Staging
+name: Attendly Main
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest, main]
 
     steps:
       - name: Checkout code
