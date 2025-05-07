@@ -3,8 +3,17 @@ import { useState } from "react";
 import { toggleEventParticipation } from "../../services/event.service";
 import type { IEvent } from "../../types/event.type";
 
-function Event({ title, thumbnail, description, date, id }: IEvent) {
-  const [isParticipating, setIsParticipating] = useState(false);
+function Event({
+  title,
+  thumbnail,
+  description,
+  date,
+  id,
+  EventParticipation,
+}: IEvent) {
+  const [isParticipating, setIsParticipating] = useState(
+    EventParticipation.length > 0
+  );
 
   const handelParticipation = async () => {
     await toggleEventParticipation(id);

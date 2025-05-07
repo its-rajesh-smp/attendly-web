@@ -5,6 +5,9 @@ import { toast } from "sonner";
 const axiosInterceptors = axios.create({
   baseURL: API_URL, // Replace with your backend URL and port
   timeout: 10000, // Optional: specify request timeout in milliseconds
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("authToken") || ""}`, // Optional: set authorization token
+  },
 });
 
 export const setAuthTokenOnAxiosInterceptors = (authToken: string) => {

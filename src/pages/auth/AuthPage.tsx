@@ -14,8 +14,10 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/common/components/UI/Tabs";
+import { useAppDispatch } from "@/common/hooks/useAppDispatch";
 import { Eye, EyeOff, Lock, Mail, User } from "lucide-react";
 import { useState } from "react";
+import { loginAct } from "./action-creators/auth.act";
 
 const AuthPage = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -25,9 +27,12 @@ const AuthPage = () => {
   const [signupPassword, setSignupPassword] = useState("");
   const [signupName, setSignupName] = useState("");
 
+  const dispatch = useAppDispatch();
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      await dispatch(loginAct({ email: loginEmail, password: loginPassword }));
     } catch (error) {
       console.error("Login error:", error);
     }
