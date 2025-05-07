@@ -1,7 +1,16 @@
 import { Button } from "@/common/components/UI/Button";
+import { useState } from "react";
+import { toggleEventParticipation } from "../../services/event.service";
 import type { IEvent } from "../../types/event.type";
 
-function Event({ title, thumbnail, description, date }: IEvent) {
+function Event({ title, thumbnail, description, date, id }: IEvent) {
+  const [isParticipating, setIsParticipating] = useState(false);
+
+  const handelParticipation = async () => {
+    await toggleEventParticipation(id);
+    setIsParticipating(!isParticipating);
+  };
+
   return (
     <div className="bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">
       <div className="h-48 bg-gradient-to-r from-blue-500 to-purple-600 relative">
@@ -18,8 +27,8 @@ function Event({ title, thumbnail, description, date }: IEvent) {
           <span className="text-sm text-gray-500">
             {new Date(date).toDateString()}
           </span>
-          <Button variant="outline" size="sm">
-            RSVP
+          <Button onClick={handelParticipation} variant="outline" size="sm">
+            {isParticipating ? "Leave" : "RSVP"}
           </Button>
         </div>
       </div>

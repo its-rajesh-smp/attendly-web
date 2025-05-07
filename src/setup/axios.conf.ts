@@ -5,15 +5,10 @@ import { toast } from "sonner";
 const axiosInterceptors = axios.create({
   baseURL: API_URL, // Replace with your backend URL and port
   timeout: 10000, // Optional: specify request timeout in milliseconds
-  headers: {
-    "Content-Type": "application/json", // Optional: set default headers
-    Authorization: `Bearer ${localStorage.getItem("authToken") || ""}`, // Optional: set authorization token
-  },
 });
 
 export const setAuthTokenOnAxiosInterceptors = (authToken: string) => {
   axiosInterceptors.defaults.headers["Authorization"] = `Bearer ${authToken}`;
-  axiosInterceptors.defaults.headers["Content-Type"] = `application/json`;
 };
 
 axiosInterceptors.interceptors.response.use(
