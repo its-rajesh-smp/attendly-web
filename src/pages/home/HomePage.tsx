@@ -1,8 +1,9 @@
 import { Button } from "@/common/components/UI/Button";
 import { CalendarDays, MapPin, Users } from "lucide-react";
 import { Link } from "react-router";
+import EventsContainer from "./components/EventsContainer";
 
-const LandingPage = () => {
+const HomePage = () => {
   return (
     <div className=" relative min-h-screen flex flex-col">
       {/* Hero Section */}
@@ -125,93 +126,8 @@ const LandingPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Event 1 */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">
-              <div className="h-48 bg-gradient-to-r from-blue-500 to-purple-600 relative">
-                <img
-                  className="w-full h-full object-cover absolute"
-                  src="/webdev-summit.jpg"
-                  alt="Event 1"
-                />
-                <div className="absolute bottom-4 left-4 bg-white px-3 py-1 rounded-full text-sm font-medium text-purple-700">
-                  Tech Conference
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">
-                  Web Development Summit
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Learn the latest trends in web development from industry
-                  experts.
-                </p>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-500">June 15, 2025</span>
-                  <Button variant="outline" size="sm">
-                    RSVP
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* Event 2 */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">
-              <div className="h-48 bg-gradient-to-r from-pink-500 to-rose-600 relative">
-                <img
-                  className="w-full h-full object-cover absolute"
-                  src="/music.jpg"
-                  alt="Event 2"
-                />
-                <div className="absolute bottom-4 left-4 bg-white px-3 py-1 rounded-full text-sm font-medium text-pink-700">
-                  Music Festival
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">Summer Music Fest</h3>
-                <p className="text-gray-600 mb-4">
-                  Three days of amazing music performances and art
-                  installations.
-                </p>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-500">
-                    July 10-12, 2025
-                  </span>
-                  <Button variant="outline" size="sm">
-                    RSVP
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* Event 3 */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">
-              <div className="h-48 bg-gradient-to-r from-amber-400 to-orange-600 relative">
-                <img
-                  className="w-full h-full object-cover absolute"
-                  src="/ui-ux.jpg"
-                  alt="Event 3"
-                />
-                <div className="absolute bottom-4 left-4 bg-white px-3 py-1 rounded-full text-sm font-medium text-orange-700">
-                  Workshop
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">
-                  UX Design Masterclass
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Intensive workshop on creating delightful user experiences.
-                </p>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-500">August 5, 2025</span>
-                  <Button variant="outline" size="sm">
-                    RSVP
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Events */}
+          <EventsContainer />
 
           <div className="text-center mt-12">
             <Button className="bg-blue-600 hover:bg-blue-700 text-white">
@@ -313,4 +229,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default HomePage;

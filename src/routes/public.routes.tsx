@@ -1,8 +1,8 @@
-import LandingPage from "@/pages/landing/LandingPage";
+import HomePage from "@/pages/home/HomePage";
 
 const publicRoutes = [
   {
-    element: <LandingPage />,
+    element: <HomePage />,
     path: "/",
   },
 ];
