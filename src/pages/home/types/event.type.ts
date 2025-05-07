@@ -4,5 +4,5 @@ export interface IEvent {
   description: string;
   date: string;
   thumbnail: string;
-  EventParticipation: any[];
+  isRsvpToEvent: boolean;
 }

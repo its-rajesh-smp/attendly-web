@@ -1,5 +1,9 @@
 import axiosInterceptors from "@/setup/axios.conf";
 
-export const toggleEventParticipation = async (id: string) => {
-  return axiosInterceptors.post(`/event-participation/${id}`);
+export const rsvpToEvent = async (id: string) => {
+  return axiosInterceptors.post(`/event-rsvp/${id}`);
+};
+
+export const unRsvpFromEvent = async (id: string) => {
+  return axiosInterceptors.delete(`/event-rsvp/${id}`);
 };

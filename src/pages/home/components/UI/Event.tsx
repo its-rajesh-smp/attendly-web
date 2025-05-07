@@ -2,7 +2,7 @@ import { Button } from "@/common/components/UI/Button";
 import { useAppSelector } from "@/common/hooks/useAppSelector";
 import { useState } from "react";
 import { Link } from "react-router";
-import { toggleEventParticipation } from "../../services/event.service";
+import { rsvpToEvent, unRsvpFromEvent } from "../../services/event.service";
 import type { IEvent } from "../../types/event.type";
 
 function Event({
@@ -11,16 +11,22 @@ function Event({
   description,
   date,
   id,
-  EventParticipation,
+  isRsvpToEvent,
 }: IEvent) {
   const { isAuthenticated } = useAppSelector((state) => state.authSlice);
-  const [isParticipating, setIsParticipating] = useState(
-    EventParticipation?.length > 0
-  );
+  const [isCurrentRsvpToEvent, setIsCurrentRsvpToEvent] =
+    useState(isRsvpToEvent);
+  const [loading, setLoading] = useState(false);
 
-  const handelParticipation = async () => {
-    await toggleEventParticipation(id);
-    setIsParticipating(!isParticipating);
+  const handelRsvp = async () => {
+    setLoading(true);
+    if (isRsvpToEvent) {
+      await unRsvpFromEvent(id);
+    } else {
+      await rsvpToEvent(id);
+    }
+    setIsCurrentRsvpToEvent(!isCurrentRsvpToEvent);
+    setLoading(false);
   };
 
   return (
@@ -40,8 +46,13 @@ function Event({
             {new Date(date).toDateString()}
           </span>
           {isAuthenticated ? (
-            <Button onClick={handelParticipation} variant="outline" size="sm">
-              {isParticipating ? "Leave" : "RSVP"}
+            <Button
+              loading={loading}
+              onClick={handelRsvp}
+              variant="outline"
+              size="sm"
+            >
+              {isCurrentRsvpToEvent ? "Leave" : "RSVP"}
             </Button>
           ) : (
             <Button variant="outline" size="sm">
