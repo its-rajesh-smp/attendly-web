@@ -1,5 +1,7 @@
 import { Button } from "@/common/components/UI/Button";
+import { useAppSelector } from "@/common/hooks/useAppSelector";
 import { useState } from "react";
+import { Link } from "react-router";
 import { toggleEventParticipation } from "../../services/event.service";
 import type { IEvent } from "../../types/event.type";
 
@@ -11,8 +13,9 @@ function Event({
   id,
   EventParticipation,
 }: IEvent) {
+  const { isAuthenticated } = useAppSelector((state) => state.authSlice);
   const [isParticipating, setIsParticipating] = useState(
-    EventParticipation.length > 0
+    EventParticipation?.length > 0
   );
 
   const handelParticipation = async () => {
@@ -36,9 +39,15 @@ function Event({
           <span className="text-sm text-gray-500">
             {new Date(date).toDateString()}
           </span>
-          <Button onClick={handelParticipation} variant="outline" size="sm">
-            {isParticipating ? "Leave" : "RSVP"}
-          </Button>
+          {isAuthenticated ? (
+            <Button onClick={handelParticipation} variant="outline" size="sm">
+              {isParticipating ? "Leave" : "RSVP"}
+            </Button>
+          ) : (
+            <Button variant="outline" size="sm">
+              <Link to="/register">Join to RSVP</Link>
+            </Button>
+          )}
         </div>
       </div>
     </div>
