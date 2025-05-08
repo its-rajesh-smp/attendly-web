@@ -20,10 +20,10 @@ jobs:
           node-version: 18
 
       - name: Install pnpm
-        run: npm install -g pnpm
+        run: sudo npm install -g pnpm
 
       - name: Install dependencies
-        run: pnpm install
+        run: sudo pnpm install
 
       - name: Build project
-        run: pnpm run build
+        run: sudo pnpm run build

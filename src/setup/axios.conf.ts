@@ -1,6 +1,5 @@
 import { API_URL } from "@/common/constants/app.const";
-import { Logger } from "@/common/utils";
-import axios, { AxiosError, type AxiosResponse } from "axios";
+import axios, { type AxiosResponse } from "axios";
 
 const axiosInterceptors = axios.create({
   baseURL: API_URL, // Replace with your backend URL and port
