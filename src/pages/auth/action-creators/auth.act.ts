@@ -1,7 +1,8 @@
 import type { AppDispatch } from "@/common/hooks/useAppDispatch";
+import { Logger } from "@/common/utils";
+import { setAuthTokenOnAxiosInterceptors } from "@/setup/axios.conf";
 import { authenticate, logout } from "../reducers/auth.reducer";
 import { createAccount, fetchUser, login } from "../service/auth.service";
-import { setAuthTokenOnAxiosInterceptors } from "@/setup/axios.conf";
 
 export const loginAct = (formData: { email: string; password: string }) => {
   return async (dispatch: AppDispatch) => {
@@ -10,23 +11,19 @@ export const loginAct = (formData: { email: string; password: string }) => {
       const { authToken, user } = response.data;
       dispatch(authenticate({ authToken, user }));
     } catch (error) {
-      throw error;
+      Logger.logError(error);
     }
   };
 };
 
-export const registerAct = (formData: {
-  email: string;
-  password: string;
-  dashboardSlug: string;
-}) => {
+export const registerAct = (formData: { email: string; password: string }) => {
   return async (dispatch: AppDispatch) => {
     try {
       const response = await createAccount(formData);
       const { authToken, user } = response.data;
       dispatch(authenticate({ authToken, user }));
     } catch (error) {
-      throw error;
+      Logger.logError(error);
     }
   };
 };
@@ -34,7 +31,6 @@ export const registerAct = (formData: {
 export const fetchUserAct = () => {
   return async (dispatch: AppDispatch) => {
     const authToken = localStorage.getItem("authToken");
-    console.log(authToken);
     if (!authToken) return false;
     setAuthTokenOnAxiosInterceptors(authToken);
     try {
@@ -43,7 +39,7 @@ export const fetchUserAct = () => {
       dispatch(authenticate({ user, authToken }));
     } catch (error) {
       dispatch(logout());
-      throw error;
+      Logger.logError(error);
     }
   };
 };
