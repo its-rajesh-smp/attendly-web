@@ -39,9 +39,9 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     e.preventDefault();
     const payload = Dto.validateInput(AuthDto.userLoginSchema, userInput);
     if (!payload) return;
+    setLoading(true);
     try {
-      setLoading(true);
-      await dispatch(loginAct(payload));
+      await dispatch(loginAct(userInput));
     } catch (error) {
       Logger.logError(error);
     } finally {
@@ -55,7 +55,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     if (!payload) return;
     try {
       setLoading(true);
-      await dispatch(registerAct(payload));
+      await dispatch(registerAct(userInput));
     } catch (error) {
       Logger.logError(error);
     } finally {

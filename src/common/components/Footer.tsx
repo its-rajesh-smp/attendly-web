@@ -29,12 +29,13 @@ function Footer() {
                 </li>
                 <li>
                   {isAuthenticated ? (
-                    <span
+                    <a
+                      href="#hero"
                       onClick={() => dispatch(logout())}
                       className="hover:text-purple-600 cursor-pointer"
                     >
                       Log Out
-                    </span>
+                    </a>
                   ) : (
                     <Link to="/register" className="hover:text-purple-600">
                       Register

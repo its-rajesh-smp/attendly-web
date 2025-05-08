@@ -1,5 +1,6 @@
 import { Button } from "@/common/components/UI/Button";
 import { useAppSelector } from "@/common/hooks/useAppSelector";
+import { Logger } from "@/common/utils";
 import { useState } from "react";
 import { Link } from "react-router";
 import { rsvpToEvent, unRsvpFromEvent } from "../../services/event.service";
@@ -20,13 +21,18 @@ function Event({
 
   const handelRsvp = async () => {
     setLoading(true);
-    if (isRsvpToEvent) {
-      await unRsvpFromEvent(id);
-    } else {
-      await rsvpToEvent(id);
+    try {
+      if (isCurrentRsvpToEvent) {
+        await unRsvpFromEvent(id);
+      } else {
+        await rsvpToEvent(id);
+      }
+      setIsCurrentRsvpToEvent(!isCurrentRsvpToEvent);
+    } catch (error) {
+      Logger.logError(error);
+    } finally {
+      setLoading(false);
     }
-    setIsCurrentRsvpToEvent(!isCurrentRsvpToEvent);
-    setLoading(false);
   };
 
   return (

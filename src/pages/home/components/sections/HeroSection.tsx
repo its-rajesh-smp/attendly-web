@@ -28,12 +28,14 @@ function HeroSection() {
 
             <div className="flex flex-wrap flex-col md:flex-row w-full justify-center gap-3">
               {!isAuthenticated && (
-                <Button
-                  className="bg-pink-500  max-w-xs hover:bg-pink-600 text-white"
-                  size="lg"
-                >
-                  <Link to="/register">Join Now</Link>
-                </Button>
+                <Link to="/register">
+                  <Button
+                    className="bg-pink-500  max-w-xs hover:bg-pink-600 text-white"
+                    size="lg"
+                  >
+                    Join Now
+                  </Button>
+                </Link>
               )}
 
               <a href="#current-events">

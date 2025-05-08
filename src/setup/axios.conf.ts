@@ -1,6 +1,6 @@
 import { API_URL } from "@/common/constants/app.const";
+import { Logger } from "@/common/utils";
 import axios, { AxiosError, type AxiosResponse } from "axios";
-import { toast } from "sonner";
 
 const axiosInterceptors = axios.create({
   baseURL: API_URL, // Replace with your backend URL and port
@@ -21,17 +21,12 @@ axiosInterceptors.interceptors.response.use(
       ...response,
       data: data?.data || data,
     };
-  },
-  (error: AxiosError) => {
-    const { response } = error;
-    const data: any = response?.data;
-    const message = data?.error || data?.message || error.message;
-    toast.error(message);
-    return Promise.reject({
-      ...error,
-      message,
-    });
   }
+  // Optional: handle errors
+  // (error: AxiosError) => {
+  //   Logger.logError(error);
+  //   return Promise.reject(error);
+  // }
 );
 
 export default axiosInterceptors;
