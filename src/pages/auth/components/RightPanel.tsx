@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/common/components/UI/Card";
 import AuthTabs from "./AuthTabs";
+import { Link } from "react-router";
 
 function RightPanel() {
   return (
@@ -25,20 +26,20 @@ function RightPanel() {
         </CardContent>
         <CardFooter className="flex flex-col space-y-4 text-center text-sm text-muted-foreground">
           <div>
-            By continuing, you agree to Attendly's
-            <a
-              href="#"
+            By continuing, you agree to Attendly's{" "}
+            <Link
+              to="/tc"
               className="text-purple-600 hover:text-purple-800 underline"
             >
               Terms of Service
-            </a>
-            and
-            <a
-              href="#"
+            </Link>{" "}
+            and{" "}
+            <Link
+              to="/privacy-policy"
               className="text-purple-600 hover:text-purple-800 underline"
             >
               Privacy Policy
-            </a>
+            </Link>
           </div>
         </CardFooter>
       </Card>

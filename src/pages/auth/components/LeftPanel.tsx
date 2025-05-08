@@ -1,13 +1,12 @@
 import { Button } from "@/common/components/UI/Button";
+import { Link } from "react-router";
 
 function LeftPanel() {
   return (
     <div className="w-full md:w-1/2 p-8 flex flex-col justify-center items-center text-white animate-fade-in bg-gradient-to-br from-purple-600 to-pink-500">
       <div className="max-w-md text-center">
         <div className="mb-4 flex items-center justify-center">
-          <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center text-2xl font-bold">
-            A
-          </div>
+          <img src="/favicon.png" className="w-10 h-10" />
           <h1 className="ml-2 text-2xl font-bold">Attendly</h1>
         </div>
         <h2 className="text-5xl font-bold mb-4">We Make</h2>
@@ -19,14 +18,8 @@ function LeftPanel() {
           From concerts to conferences, we've got you covered.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
-          <Button
-            variant="outline"
-            className="bg-white/10 border-white/20 hover:bg-white/20"
-          >
-            Explore Events
-          </Button>
-          <Button className="bg-pink-600 hover:bg-pink-700 text-white border-none">
-            Learn More
+          <Button variant="outline" className="bg-white/10 border-white/20 ">
+            <Link to="/">Explore Events</Link>
           </Button>
         </div>
       </div>

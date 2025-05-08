@@ -1,6 +1,4 @@
-import { Button } from "@/common/components/UI/Button";
 import { CalendarDays, MapPin, Users } from "lucide-react";
-import { Link } from "react-router";
 
 function AboutSection() {
   return (

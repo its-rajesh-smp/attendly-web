@@ -3,6 +3,7 @@ import { Input } from "@/common/components/UI/Input";
 import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { useContext } from "react";
 import AuthContext from "../../contexts/auth.context";
+import { Link } from "react-router";
 
 function LoginForm() {
   const {
@@ -11,6 +12,7 @@ function LoginForm() {
     setUserInput,
     togglePasswordVisibility,
     isPasswordVisible,
+    loading,
   } = useContext(AuthContext);
 
   return (
@@ -59,12 +61,17 @@ function LoginForm() {
       </div>
 
       <div className="flex justify-end">
-        <a href="#" className="text-sm text-purple-600 hover:text-purple-800">
+        <Link
+          to="/forgot-password"
+          className="text-sm text-purple-600 hover:text-purple-800"
+        >
           Forgot password?
-        </a>
+        </Link>
       </div>
 
       <Button
+        loading={loading}
+        disabled={loading}
         type="submit"
         className="w-full bg-purple-600 hover:bg-purple-700"
       >

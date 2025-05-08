@@ -3,12 +3,7 @@ import { Dto, Logger } from "@/common/utils";
 import { createContext, useState, type ReactNode } from "react";
 import { loginAct, registerAct } from "../action-creators/auth.act";
 import { AuthDto } from "../dtos";
-
-interface IUserInput {
-  name?: string;
-  email: string;
-  password: string;
-}
+import type { IUserInput } from "../types/user.type";
 
 interface IAuthContext {
   handleLogin: (e: React.FormEvent) => void;
@@ -17,6 +12,7 @@ interface IAuthContext {
   isPasswordVisible: boolean;
   userInput: IUserInput;
   setUserInput: React.Dispatch<React.SetStateAction<IUserInput>>;
+  loading: boolean;
 }
 
 const AuthContext = createContext<IAuthContext>({
@@ -26,6 +22,7 @@ const AuthContext = createContext<IAuthContext>({
   isPasswordVisible: false,
   userInput: { email: "", password: "" },
   setUserInput: () => {},
+  loading: false,
 });
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
@@ -35,6 +32,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     name: "",
   });
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -42,9 +40,12 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const payload = Dto.validateInput(AuthDto.userLoginSchema, userInput);
     if (!payload) return;
     try {
+      setLoading(true);
       await dispatch(loginAct(payload));
     } catch (error) {
       Logger.logError(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -53,9 +54,12 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const payload = Dto.validateInput(AuthDto.userSignupSchema, userInput);
     if (!payload) return;
     try {
+      setLoading(true);
       await dispatch(registerAct(payload));
     } catch (error) {
       Logger.logError(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -72,6 +76,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         isPasswordVisible,
         userInput,
         setUserInput,
+        loading,
       }}
     >
       {children}

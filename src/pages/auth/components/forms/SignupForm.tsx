@@ -11,6 +11,7 @@ function SignupForm() {
     setUserInput,
     togglePasswordVisibility,
     isPasswordVisible,
+    loading,
   } = useContext(AuthContext);
 
   return (
@@ -76,6 +77,8 @@ function SignupForm() {
       <Button
         type="submit"
         className="w-full bg-purple-600 hover:bg-purple-700"
+        disabled={loading}
+        loading={loading}
       >
         Sign Up
       </Button>

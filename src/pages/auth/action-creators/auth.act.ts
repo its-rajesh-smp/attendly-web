@@ -1,6 +1,6 @@
 import type { AppDispatch } from "@/common/hooks/useAppDispatch";
 import { Logger } from "@/common/utils";
-import { setAuthTokenOnAxiosInterceptors } from "@/setup/axios.conf";
+import { setAuthTokenOnAxiosInterceptor } from "@/setup/axios.conf";
 import { authenticate, logout } from "../reducers/auth.reducer";
 import { createAccount, fetchUser, login } from "../service/auth.service";
 
@@ -32,7 +32,7 @@ export const fetchUserAct = () => {
   return async (dispatch: AppDispatch) => {
     const authToken = localStorage.getItem("authToken");
     if (!authToken) return false;
-    setAuthTokenOnAxiosInterceptors(authToken);
+    setAuthTokenOnAxiosInterceptor(authToken);
     try {
       const response = await fetchUser();
       const { user } = response.data;

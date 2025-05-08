@@ -31,7 +31,7 @@ function Footer() {
                   {isAuthenticated ? (
                     <span
                       onClick={() => dispatch(logout())}
-                      className="hover:text-purple-600"
+                      className="hover:text-purple-600 cursor-pointer"
                     >
                       Log Out
                     </span>
@@ -47,14 +47,14 @@ function Footer() {
               <h4 className="font-medium mb-3">Legal</h4>
               <ul className="space-y-2 text-gray-500">
                 <li>
-                  <a href="/" className="hover:text-purple-600">
+                  <Link to="/privacy" className="hover:text-purple-600">
                     Privacy Policy
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/" className="hover:text-purple-600">
+                  <Link to="/tc" className="hover:text-purple-600">
                     Terms of Service
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

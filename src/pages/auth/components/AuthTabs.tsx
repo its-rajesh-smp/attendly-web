@@ -12,8 +12,12 @@ function AuthTabs() {
     <AuthContextProvider>
       <Tabs defaultValue="login" className="w-full">
         <TabsList className="grid w-full grid-cols-2 mb-6">
-          <TabsTrigger value="login">Login</TabsTrigger>
-          <TabsTrigger value="signup">Sign Up</TabsTrigger>
+          <TabsTrigger className="cursor-pointer" value="login">
+            Login
+          </TabsTrigger>
+          <TabsTrigger className="cursor-pointer" value="signup">
+            Sign Up
+          </TabsTrigger>
         </TabsList>
 
         {/* Login Form */}

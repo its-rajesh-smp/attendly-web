@@ -39,7 +39,7 @@ function HeroSection() {
               <a href="#current-events">
                 <Button
                   variant="outline"
-                  className="bg-white/10  max-w-2xs  text-white hover:bg-white/20 border-white"
+                  className="bg-white/10   max-w-2xs  text-white  border-white"
                   size="lg"
                 >
                   Explore Events
