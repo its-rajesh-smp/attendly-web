@@ -1,4 +1,4 @@
-import AuthPage from "@/pages/auth/AuthPage";
+import AuthPage from "@/pages/AuthPage";
 import GuestGuard from "./guards/GuestGuard";
 
 const guestRoutes = [

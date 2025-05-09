@@ -1,4 +1,4 @@
-import { API_URL } from "@/common/constants/app.const";
+import { API_URL } from "@/constants";
 import axios, { type AxiosResponse } from "axios";
 
 const axiosInterceptors = axios.create({

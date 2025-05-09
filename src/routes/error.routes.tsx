@@ -1,4 +1,4 @@
-import ErrorPage from "@/pages/error/ErrorPage";
+import ErrorPage from "@/pages/ErrorPage";
 
 const errorRoutes = [
   {

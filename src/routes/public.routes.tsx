@@ -1,5 +1,5 @@
-import EventsPage from "@/pages/events/EventsPage";
-import HomePage from "@/pages/home/HomePage";
+import EventsPage from "@/pages/EventsPage";
+import HomePage from "@/pages/HomePage";
 
 const publicRoutes = [
   {
