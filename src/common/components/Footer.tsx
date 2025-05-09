@@ -1,11 +1,12 @@
 import { logout } from "@/pages/auth/reducers/auth.reducer";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { useAppDispatch } from "../hooks/useAppDispatch";
 import { useAppSelector } from "../hooks/useAppSelector";
 
 function Footer() {
   const { isAuthenticated } = useAppSelector((state) => state.authSlice);
   const dispatch = useAppDispatch();
+  const location = useLocation();
   return (
     <footer className="border-t py-12 bg-white">
       <div className="container mx-auto px-5 md:px-20">
@@ -23,9 +24,12 @@ function Footer() {
               <h4 className="font-medium mb-3">Navigation</h4>
               <ul className="space-y-2 text-gray-500">
                 <li>
-                  <a href="#hero" className="hover:text-purple-600">
-                    Home
-                  </a>
+                  <Link
+                    to={location.pathname === "/" ? "/events" : "/"}
+                    className="hover:text-purple-600"
+                  >
+                    {location.pathname === "/" ? "Events" : "Home"}
+                  </Link>
                 </li>
                 <li>
                   {isAuthenticated ? (
