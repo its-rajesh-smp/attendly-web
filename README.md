@@ -1,4 +1,4 @@
-# Attendly
+# Attendly Web
 
 Attendly is a modern event management platform that allows users to discover, join, and RSVP to events seamlessly. Built with a React and TypeScript frontend, it provides a user-friendly interface for browsing events, managing RSVPs, and handling user authentication.
 
