@@ -30,4 +30,4 @@ jobs:
         run: pnpm install
 
       - name: Build project
-        run: pnpm run build
+        run: sudo npm run build
