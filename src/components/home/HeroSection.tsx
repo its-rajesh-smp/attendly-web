@@ -1,11 +1,11 @@
 import {
+  APP_LOGO_IMAGE,
   ARROW_TOP_LEFT,
   ARROW_TOP_RIGHT,
   DOT_PATTERN_IMAGE,
   PUZZLE_PIECE,
 } from "@/assets";
 import { Button } from "@/components/ui/Button";
-import { APP_ICON } from "@/constants";
 import { authNavigationPaths } from "@/constants/auth.const";
 import { useAppSelector } from "@/hooks";
 import { Link } from "react-router";
@@ -37,7 +37,7 @@ function HeroSection() {
         <div className="container flex flex-col justify-center items-center mx-auto px-4 z-10 relative">
           <div className="max-w-3xl flex flex-col justify-center items-center">
             <div className="h-full w-full flex lg:justify-center items-center  ">
-              <img src={APP_ICON} className="w-10 h-10" />
+              <img src={APP_LOGO_IMAGE} className="w-10 h-10" />
               <h1 className="font-bold text-3xl ml-3 text-white">Attendly</h1>
             </div>
 

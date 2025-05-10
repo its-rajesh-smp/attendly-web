@@ -19,12 +19,15 @@ jobs:
         with:
           node-version: 18
 
-      - name: Clean up previous node_modules
-        run: |
-          sudo rm -rf node_modules package-lock.json
+      - name: Install pnpm
+        run: npm install -g pnpm
 
-      - name: Install dependencies
-        run: sudo npm install
+      - name: Clean up previous modules
+        run: |
+          sudo rm -rf node_modules pnpm-lock.yaml
+
+      - name: Install dependencies with pnpm
+        run: pnpm install
 
       - name: Build project
-        run: sudo npm run build
+        run: pnpm run build

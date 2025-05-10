@@ -3,7 +3,9 @@ import gibliEventImage from "./gibli-event-image.jpg";
 import arrowTopLeft from "./svg/arrow-top-left.svg";
 import arrowTopRight from "./svg/arrow-top-right.svg";
 import puzzlePiece from "./svg/puzzle-piece.svg";
+import appLogo from "./app-logo.png";
 
+export const APP_LOGO_IMAGE = appLogo;
 export const NOT_FOUND_PAGE_IMAGE = pageNotFoundImage;
 export const GIBLI_EVENT_IMAGE = gibliEventImage;
 export const ARROW_TOP_LEFT = arrowTopLeft;
