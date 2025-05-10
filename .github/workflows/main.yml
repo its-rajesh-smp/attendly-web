@@ -19,6 +19,10 @@ jobs:
         with:
           node-version: 18
 
+      - name: Clean up previous node_modules
+        run: |
+          sudo rm -rf node_modules package-lock.json
+
       - name: Install dependencies
         run: sudo npm install
 
