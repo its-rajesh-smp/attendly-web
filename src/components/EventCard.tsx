@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { authNavigationPaths } from "@/constants/auth.const";
 import { useAppSelector } from "@/hooks";
 import { EventService } from "@/service";
 import type { IEvent } from "@/types";
@@ -6,7 +7,7 @@ import { Logger } from "@/utils";
 import { useState } from "react";
 import { Link } from "react-router";
 
-function Event({
+function EventCard({
   title,
   thumbnail,
   description,
@@ -61,9 +62,15 @@ function Event({
               {isCurrentRsvpToEvent ? "Leave" : "RSVP"}
             </Button>
           ) : (
-            <Button variant="outline" size="sm">
-              <Link to="/register">Join to RSVP</Link>
-            </Button>
+            <Link to={authNavigationPaths.REGISTER}>
+              <Button
+                className="bg-purple-400 text-white hover:bg-purple-500 hover:text-white"
+                variant="outline"
+                size="sm"
+              >
+                Join to RSVP
+              </Button>
+            </Link>
           )}
         </div>
       </div>
@@ -71,4 +78,4 @@ function Event({
   );
 }
 
-export default Event;
+export default EventCard;

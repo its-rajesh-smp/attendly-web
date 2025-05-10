@@ -1,4 +1,11 @@
+import {
+  ARROW_TOP_LEFT,
+  ARROW_TOP_RIGHT,
+  DOT_PATTERN_IMAGE,
+  PUZZLE_PIECE,
+} from "@/assets";
 import { Button } from "@/components/ui/Button";
+import { APP_ICON } from "@/constants";
 import { authNavigationPaths } from "@/constants/auth.const";
 import { useAppSelector } from "@/hooks";
 import { Link } from "react-router";
@@ -8,15 +15,29 @@ function HeroSection() {
   return (
     <section id="hero" className="relative">
       <img
-        src="https://startupbricks.in/_next/static/images/dot-pattern-0a53c4b4aea3ed3e3d957ec8fe96cb1c.svg"
+        src={DOT_PATTERN_IMAGE}
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
+      />
+
+      <img
+        src={ARROW_TOP_RIGHT}
+        className="absolute bottom-0 -left-30 md:block hidden opacity-50 object-cover z-0"
+      />
+      <img
+        src={ARROW_TOP_LEFT}
+        className="absolute bottom-0 -right-30 md:block hidden opacity-50 object-cover z-0"
+      />
+
+      <img
+        src={PUZZLE_PIECE}
+        className="absolute top-10 right-36 md:block hidden opacity-50 object-cover z-0"
       />
 
       <div className="w-full bg-gradient-to-r from-purple-700 to-blue-600 h-[500px] md:py-0 py-10  md:flex items-center">
         <div className="container flex flex-col justify-center items-center mx-auto px-4 z-10 relative">
           <div className="max-w-3xl flex flex-col justify-center items-center">
             <div className="h-full w-full flex lg:justify-center items-center  ">
-              <img src="/favicon.png" className="w-10 h-10" />
+              <img src={APP_ICON} className="w-10 h-10" />
               <h1 className="font-bold text-3xl ml-3 text-white">Attendly</h1>
             </div>
 

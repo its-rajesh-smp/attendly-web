@@ -14,5 +14,5 @@ export function createQuery(
     }
   }
 
-  return query.toString();
+  return "?" + query.toString();
 }

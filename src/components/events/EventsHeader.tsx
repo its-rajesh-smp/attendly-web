@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { authNavigationPaths } from "@/constants/auth.const";
 import { useAppSelector } from "@/hooks";
 import { Link } from "react-router";
 
@@ -18,8 +19,11 @@ const EventsHeader = () => {
         </p>
         <div className="flex justify-center space-x-4">
           {!isAuthenticated && (
-            <Link to="/register">
-              <Button className="bg-white text-purple-700 px-6 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors">
+            <Link to={authNavigationPaths.REGISTER}>
+              <Button
+                size={"lg"}
+                className="bg-white text-purple-700  rounded-md font-medium hover:bg-gray-100 transition-colors"
+              >
                 Get Started
               </Button>
             </Link>

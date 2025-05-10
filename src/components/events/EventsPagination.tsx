@@ -2,13 +2,13 @@ import { Button } from "@/components/ui/Button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import React from "react";
 
-interface EventPaginationProps {
+interface EventsPaginationProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
 }
 
-const EventPagination: React.FC<EventPaginationProps> = ({
+const EventsPagination: React.FC<EventsPaginationProps> = ({
   currentPage,
   totalPages,
   onPageChange,
@@ -78,4 +78,4 @@ const EventPagination: React.FC<EventPaginationProps> = ({
   );
 };
 
-export default EventPagination;
+export default EventsPagination;

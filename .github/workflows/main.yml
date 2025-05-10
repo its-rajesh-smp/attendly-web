@@ -19,11 +19,8 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install pnpm
-        run: sudo npm install -g pnpm
-
       - name: Install dependencies
-        run: sudo pnpm install
+        run: sudo npm install
 
       - name: Build project
-        run: sudo pnpm run build
+        run: sudo npm run build

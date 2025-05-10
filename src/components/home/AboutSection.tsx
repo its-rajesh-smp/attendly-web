@@ -1,3 +1,4 @@
+import { GIBLI_EVENT_IMAGE } from "@/assets";
 import { CalendarDays, MapPin, Users } from "lucide-react";
 
 function AboutSection() {
@@ -7,7 +8,7 @@ function AboutSection() {
         <div className="flex flex-col md:flex-row gap-10 items-center">
           <div className="md:w-1/2">
             <img
-              src="/gibli-event-image.jpg"
+              src={GIBLI_EVENT_IMAGE}
               alt="Attendly Events"
               className="rounded-lg shadow-xl w-full max-w-lg mx-auto"
             />

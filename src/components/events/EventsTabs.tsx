@@ -1,6 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import { useFetch } from "@/hooks";
 import { useAppSelector } from "@/hooks/useAppSelector";
+import useScroll from "@/hooks/useScroll";
 import type { IEvent } from "@/types";
 import { createQuery } from "@/utils";
 import { useState } from "react";
@@ -12,6 +13,7 @@ function EventsTabs() {
   const [activeTab, setActiveTab] = useState<string>("all");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const { isAuthenticated } = useAppSelector((state) => state.authReducer);
+  const scrollTo = useScroll();
 
   const query = createQuery({
     page: currentPage,
@@ -19,17 +21,20 @@ function EventsTabs() {
     isRsvpToEvent: activeTab === "rsvp",
   });
 
-  const paginatedEvents = useFetch(`/event/all?${query}`);
+  const paginatedEvents = useFetch(`/event/all${query}`);
   const events: IEvent[] = paginatedEvents?.events || [];
   const totalPages = paginatedEvents?.pagination?.totalPages || 1;
 
   // Handle page change
   const handlePageChange = (page: number) => {
+    console.log(page);
+    scrollTo("events-section");
     setCurrentPage(page);
   };
 
   // Handle tab change
   const handleTabChange = (value: string) => {
+    // scrollTo("events-section");
     setActiveTab(value);
     setCurrentPage(1); // reset to first page
   };
@@ -37,44 +42,50 @@ function EventsTabs() {
   if (!paginatedEvents) return null;
 
   return (
-    <Tabs
-      defaultValue="all"
-      className="max-w-5xl mx-auto"
-      onValueChange={handleTabChange}
-    >
-      <div className="flex justify-center mb-8">
-        <TabsList className="grid w-full max-w-md grid-cols-2">
-          <TabsTrigger value="all">All Events</TabsTrigger>
-          <TabsTrigger value="rsvp">My RSVP Events</TabsTrigger>
-        </TabsList>
+    <>
+      <div id="events-section" className="container py-12">
+        <h2 className="text-3xl font-bold mb-8 text-center">Discover Events</h2>
       </div>
 
-      <TabsContent value="all" className="mt-0">
-        {events.length > 0 ? (
-          <EventsContainer
-            events={events}
-            currentPage={currentPage}
-            totalPages={totalPages}
-            handlePageChange={handlePageChange}
-          />
-        ) : (
-          <EmptyState message="No events found" />
-        )}
-      </TabsContent>
+      <Tabs
+        defaultValue="all"
+        className="max-w-5xl px-2 mx-auto"
+        onValueChange={handleTabChange}
+      >
+        <div className="flex justify-center mb-8">
+          <TabsList className="grid w-full max-w-md grid-cols-2">
+            <TabsTrigger value="all">All Events</TabsTrigger>
+            <TabsTrigger value="rsvp">My RSVP Events</TabsTrigger>
+          </TabsList>
+        </div>
 
-      <TabsContent value="rsvp" className="mt-0">
-        {events.length > 0 && isAuthenticated ? (
-          <EventsContainer
-            events={events}
-            currentPage={currentPage}
-            totalPages={totalPages}
-            handlePageChange={handlePageChange}
-          />
-        ) : (
-          <EmptyState message="No RSVP events found" />
-        )}
-      </TabsContent>
-    </Tabs>
+        <TabsContent value="all" className="mt-0">
+          {events.length > 0 ? (
+            <EventsContainer
+              events={events}
+              currentPage={currentPage}
+              totalPages={totalPages}
+              handlePageChange={handlePageChange}
+            />
+          ) : (
+            <EmptyState message="No events found" />
+          )}
+        </TabsContent>
+
+        <TabsContent value="rsvp" className="mt-0">
+          {events.length > 0 && isAuthenticated ? (
+            <EventsContainer
+              events={events}
+              currentPage={currentPage}
+              totalPages={totalPages}
+              handlePageChange={handlePageChange}
+            />
+          ) : (
+            <EmptyState message="No RSVP events found" />
+          )}
+        </TabsContent>
+      </Tabs>
+    </>
   );
 }
 

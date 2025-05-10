@@ -1,7 +1,8 @@
-import { Link, useLocation } from "react-router";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
-import { useAppSelector } from "../../hooks/useAppSelector";
+import { homeNavigationPaths } from "@/constants";
+import { authNavigationPaths } from "@/constants/auth.const";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import { logout } from "@/reducers";
+import { Link, useLocation } from "react-router";
 
 function Footer() {
   const { isAuthenticated } = useAppSelector((state) => state.authReducer);
@@ -12,7 +13,7 @@ function Footer() {
       <div className="container mx-auto px-5 md:px-20">
         <div className="flex flex-col gap-4 md:flex-row justify-between ">
           <div className="mb-6 w-full flex flex-col  justify-start  md:mb-0">
-            <Link to="/" className="flex items-center">
+            <Link to={homeNavigationPaths.HOME} className="flex items-center">
               <span className="text-2xl font-bold bg-gradient-to-r from-purple-700 to-blue-600 bg-clip-text text-transparent">
                 Attendly
               </span>
@@ -41,7 +42,10 @@ function Footer() {
                       Log Out
                     </a>
                   ) : (
-                    <Link to="/register" className="hover:text-purple-600">
+                    <Link
+                      to={authNavigationPaths.REGISTER}
+                      className="hover:text-purple-600"
+                    >
                       Register
                     </Link>
                   )}
@@ -52,12 +56,18 @@ function Footer() {
               <h4 className="font-medium mb-3">Legal</h4>
               <ul className="space-y-2 text-gray-500">
                 <li>
-                  <Link to="/privacy" className="hover:text-purple-600">
+                  <Link
+                    to={authNavigationPaths.PRIVACY_POLICY}
+                    className="hover:text-purple-600"
+                  >
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link to="/tc" className="hover:text-purple-600">
+                  <Link
+                    to={authNavigationPaths.TERMS_AND_CONDITIONS}
+                    className="hover:text-purple-600"
+                  >
                     Terms of Service
                   </Link>
                 </li>

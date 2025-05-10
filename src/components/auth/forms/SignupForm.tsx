@@ -63,7 +63,7 @@ function SignupForm() {
           <button
             type="button"
             onClick={togglePasswordVisibility}
-            className="absolute right-3 top-3 text-muted-foreground"
+            className="absolute right-3 top-3 cursor-pointer text-blue-600 hover:text-blue-700"
           >
             {isPasswordVisible ? (
               <EyeOff className="h-4 w-4" />

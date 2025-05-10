@@ -1,6 +1,6 @@
 import type { IEvent } from "@/types";
-import Event from "./Event";
-import EventPagination from "./EventPagination";
+import EventCard from "../EventCard";
+import EventsPagination from "./EventsPagination";
 
 function EventsContainer({
   events,
@@ -22,15 +22,15 @@ function EventsContainer({
           }`}
         >
           {events.map((event) => (
-            <Event
+            <EventCard
               key={`${event.id}+${event.isRsvpToEvent}`} // Doing this hack to force re-render
-              event={event}
+              {...event}
             />
           ))}
         </div>
 
         {totalPages > 1 && (
-          <EventPagination
+          <EventsPagination
             currentPage={currentPage}
             totalPages={totalPages}
             onPageChange={handlePageChange}
