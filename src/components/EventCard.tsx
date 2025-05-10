@@ -42,9 +42,11 @@ function EventCard({
       <div className="h-48 bg-gradient-to-r from-blue-500 to-purple-600 relative">
         <LazyImage src={thumbnail} className="w-full h-full object-cover" />
       </div>
-      <div className="p-6">
-        <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4">{description}</p>
+      <div className="p-6 flex flex-col justify-between">
+        <div className="flex flex-col">
+          <h3 className="text-xl font-bold mb-2">{title}</h3>
+          <p className="text-gray-600 mb-4 line-clamp-3">{description}</p>
+        </div>
         <div className="flex justify-between items-center">
           <span className="text-sm text-gray-500">
             {new Date(date).toDateString()}
