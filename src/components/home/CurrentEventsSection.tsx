@@ -5,13 +5,16 @@ import { eventNavigationPaths } from "@/constants";
 import { useFetch } from "@/hooks";
 import type { IEvent } from "@/types";
 import { createQuery } from "@/utils";
+import { useState } from "react";
 import { Link } from "react-router";
+import Loader from "../ui/Loader";
 
 function CurrentEventsSection() {
+  const [loader, setLoader] = useState(true);
   const query = createQuery({
     limit: 3,
   });
-  const paginatedEvents = useFetch(`/event/all${query}`);
+  const paginatedEvents = useFetch(`/event/all${query}`, setLoader);
 
   return (
     <section id="current-events" className="py-16 relative lg:px-32 bg-gray-50">
@@ -29,11 +32,15 @@ function CurrentEventsSection() {
         </div>
 
         {/* Events */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {paginatedEvents?.events?.map((event: IEvent) => (
-            <EventCard {...event} key={event.id} />
-          ))}
-        </div>
+        {loader ? (
+          <Loader />
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {paginatedEvents?.events?.map((event: IEvent) => (
+              <EventCard {...event} key={event.id} />
+            ))}
+          </div>
+        )}
 
         <Link to={eventNavigationPaths.EVENTS}>
           <Button className="mt-8 bg-blue-600 hover:bg-blue-700">

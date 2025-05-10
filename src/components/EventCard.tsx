@@ -38,12 +38,12 @@ function EventCard({
   };
 
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">
-      <div className="h-48 bg-gradient-to-r from-blue-500 to-purple-600 relative">
+    <div className="bg-white rounded-xl flex flex-col  overflow-hidden shadow-lg transition-transform hover:scale-105">
+      <div className="h-48 shrink-0 bg-gradient-to-r from-blue-500 to-purple-600 relative">
         <LazyImage src={thumbnail} className="w-full h-full object-cover" />
       </div>
-      <div className="p-6 flex flex-col justify-between">
-        <div className="flex flex-col">
+      <div className="p-6 h-full flex flex-col justify-between">
+        <div className="flex  flex-col">
           <h3 className="text-xl font-bold mb-2">{title}</h3>
           <p className="text-gray-600 mb-4 line-clamp-3">{description}</p>
         </div>

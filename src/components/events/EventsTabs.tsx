@@ -5,6 +5,7 @@ import useScroll from "@/hooks/useScroll";
 import type { IEvent } from "@/types";
 import { createQuery } from "@/utils";
 import { useState } from "react";
+import Loader from "../ui/Loader";
 import EventsContainer from "./EventsContainer";
 
 const ITEMS_PER_PAGE = 6;
@@ -13,6 +14,7 @@ function EventsTabs() {
   const [activeTab, setActiveTab] = useState<string>("all");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const { isAuthenticated } = useAppSelector((state) => state.authReducer);
+  const [loader, setLoader] = useState(true);
   const scrollTo = useScroll();
 
   const query = createQuery({
@@ -21,7 +23,7 @@ function EventsTabs() {
     isRsvpToEvent: activeTab === "rsvp",
   });
 
-  const paginatedEvents = useFetch(`/event/all${query}`);
+  const paginatedEvents = useFetch(`/event/all${query}`, setLoader);
   const events: IEvent[] = paginatedEvents?.events || [];
   const totalPages = paginatedEvents?.pagination?.totalPages || 1;
 
@@ -38,8 +40,6 @@ function EventsTabs() {
     setActiveTab(value);
     setCurrentPage(1); // reset to first page
   };
-
-  if (!paginatedEvents) return null;
 
   return (
     <>
@@ -60,7 +60,9 @@ function EventsTabs() {
         </div>
 
         <TabsContent value="all" className="mt-0">
-          {events.length > 0 ? (
+          {loader ? (
+            <Loader />
+          ) : events.length > 0 ? (
             <EventsContainer
               events={events}
               currentPage={currentPage}
@@ -73,7 +75,9 @@ function EventsTabs() {
         </TabsContent>
 
         <TabsContent value="rsvp" className="mt-0">
-          {events.length > 0 && isAuthenticated ? (
+          {loader ? (
+            <Loader />
+          ) : events.length > 0 && isAuthenticated ? (
             <EventsContainer
               events={events}
               currentPage={currentPage}
