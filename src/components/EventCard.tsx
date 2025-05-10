@@ -6,6 +6,7 @@ import type { IEvent } from "@/types";
 import { Logger } from "@/utils";
 import { useState } from "react";
 import { Link } from "react-router";
+import { LazyImage } from "./ui/LazyImage";
 
 function EventCard({
   title,
@@ -39,11 +40,7 @@ function EventCard({
   return (
     <div className="bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">
       <div className="h-48 bg-gradient-to-r from-blue-500 to-purple-600 relative">
-        <img
-          className="w-full h-full object-cover absolute"
-          src={thumbnail}
-          alt={`${title} thumbnail`}
-        />
+        <LazyImage src={thumbnail} className="w-full h-full object-cover" />
       </div>
       <div className="p-6">
         <h3 className="text-xl font-bold mb-2">{title}</h3>

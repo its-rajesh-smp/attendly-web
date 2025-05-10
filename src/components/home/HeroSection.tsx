@@ -13,7 +13,7 @@ import { Link } from "react-router";
 function HeroSection() {
   const { isAuthenticated } = useAppSelector((state) => state.authReducer);
   return (
-    <section id="hero" className="relative">
+    <section id="hero" className="relative overflow-hidden">
       <img
         src={DOT_PATTERN_IMAGE}
         className="absolute top-0 left-0 w-full h-full object-cover z-0"

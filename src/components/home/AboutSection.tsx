@@ -1,5 +1,6 @@
 import { GIBLI_EVENT_IMAGE } from "@/assets";
 import { CalendarDays, MapPin, Users } from "lucide-react";
+import { LazyImage } from "../ui/LazyImage";
 
 function AboutSection() {
   return (
@@ -7,9 +8,8 @@ function AboutSection() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row gap-10 items-center">
           <div className="md:w-1/2">
-            <img
+            <LazyImage
               src={GIBLI_EVENT_IMAGE}
-              alt="Attendly Events"
               className="rounded-lg shadow-xl w-full max-w-lg mx-auto"
             />
           </div>
